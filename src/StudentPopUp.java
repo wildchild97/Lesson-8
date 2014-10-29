@@ -8,7 +8,21 @@ public class StudentPopUp extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+        
+    //my code
+    public String getName()
+    {
+        return txtname.getText(); 
+    }
+    
+    public int[] getMarks()
+    {
+        int marks[]=new int[3];
+        marks[0]=Integer.parseInt(tblmarks.getValueAt(0,0).toString());
+        marks[1]=Integer.parseInt(tblmarks.getValueAt(0,1).toString());
+        marks[2]=Integer.parseInt(tblmarks.getValueAt(0,2).toString());
+        return marks;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,7 +35,7 @@ public class StudentPopUp extends javax.swing.JDialog {
         txtname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblmarks = new javax.swing.JTable();
         btnok = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -57,8 +71,8 @@ public class StudentPopUp extends javax.swing.JDialog {
         txtname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblmarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblmarks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -66,14 +80,14 @@ public class StudentPopUp extends javax.swing.JDialog {
                 "Mark 1", "Mark 2", "Mark 3"
             }
         ));
-        jTable3.setColumnSelectionAllowed(true);
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTable3);
-        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(0).setResizable(false);
-            jTable3.getColumnModel().getColumn(1).setResizable(false);
-            jTable3.getColumnModel().getColumn(2).setResizable(false);
+        tblmarks.setColumnSelectionAllowed(true);
+        tblmarks.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(tblmarks);
+        tblmarks.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        if (tblmarks.getColumnModel().getColumnCount() > 0) {
+            tblmarks.getColumnModel().getColumn(0).setResizable(false);
+            tblmarks.getColumnModel().getColumn(1).setResizable(false);
+            tblmarks.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -94,6 +108,11 @@ public class StudentPopUp extends javax.swing.JDialog {
         );
 
         btnok.setText("OK");
+        btnok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnokActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,6 +147,10 @@ public class StudentPopUp extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnokActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -142,7 +165,7 @@ public class StudentPopUp extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblmarks;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }
