@@ -264,7 +264,7 @@ public class StudentGUI extends javax.swing.JFrame {
         txtmark3.setText(""+s[currentstudent].getMark(3));
         lblaverage.setText(""+s[currentstudent].getAverage());
         lblcount.setText(""+size);
-        lblindex.setText(""+currentstudent);
+        lblindex.setText(""+currentstudent+1);
     }
     
     
