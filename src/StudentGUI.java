@@ -220,7 +220,7 @@ public class StudentGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void btnprevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprevActionPerformed
-        if (currentstudent<0) 
+        if (currentstudent>0) 
         {
             currentstudent--;
             showStudent();
