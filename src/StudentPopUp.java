@@ -4,36 +4,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class StudentPopUp extends javax.swing.JDialog {
-
-    /**
-     * Creates new form StudentPopUp
-     */
-    public StudentPopUp(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
-        
-    //my code
-    public String getName()
-    {
-        return txtname.getText(); 
-        
-    }
-    
-    public int[] getMarks()
-    {
-        int marks[]=new int[3];
-      
-        try{
-        DefaultTableModel model= (DefaultTableModel)tblmarks.getModel();
-        
-        marks[0]=Integer.parseInt(model.getValueAt(0,0).toString());
-        marks[1]=Integer.parseInt(model.getValueAt(0,1).toString());
-        marks[2]=Integer.parseInt(model.getValueAt(0,2).toString()); 
-       }catch (Exception e){JOptionPane.showMessageDialog(this, "Fill out all fields");}
-        
-       return marks;
-    }
+    Student temp;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -159,9 +130,36 @@ public class StudentPopUp extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
-        this.dispose();
+       int marks[] =new int[3];
+       String name=txtname.getText();
+   
+       try{
+        marks[0]=Integer.parseInt(tblmarks.getValueAt(0,0).toString());
+        marks[1]=Integer.parseInt(tblmarks.getValueAt(0,1).toString());
+        marks[2]=Integer.parseInt(tblmarks.getValueAt(0,2).toString()); 
+       }catch (Exception e)
+       {
+           JOptionPane.showMessageDialog(this, "Fill out all fields\n press <Enter> on each mark");
+           return;
+       }
+       temp= new Student(name, marks);
+       this.dispose();
     }//GEN-LAST:event_btnokActionPerformed
 
+    public void setForm(Student s)
+    {
+        DefaultTableModel model= (DefaultTableModel)(tblmarks.getModel());
+        txtname.setText(s.getName());
+        model.setValueAt(s.getMark(1),0,0);
+        model.setValueAt(s.getMark(2),0,1);
+        model.setValueAt(s.getMark(3),0,2); 
+    }
+    
+    public Student getStudent()
+    {
+        return temp;
+    }
+    
     /**
      * @param args the command line arguments
      */
