@@ -1,4 +1,5 @@
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -6,6 +7,14 @@ import javax.swing.table.DefaultTableModel;
 public class StudentPopUp extends javax.swing.JDialog {
     Student temp;
     @SuppressWarnings("unchecked")
+    
+    public  StudentPopUp(JFrame f, boolean b)
+    {
+        super(f,b);
+        initComponents();
+    }
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
