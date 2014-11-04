@@ -2,7 +2,6 @@ import javax.swing.ImageIcon;
 import java.net.URL;
 
 public class CrapsGUI extends javax.swing.JFrame {
-
     
     public CrapsGUI() {
         initComponents();
@@ -16,7 +15,7 @@ public class CrapsGUI extends javax.swing.JFrame {
         lbldie1 = new javax.swing.JLabel();
         btnquit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtgame = new javax.swing.JTextArea();
         lblmoney = new javax.swing.JLabel();
         lbldie2 = new javax.swing.JLabel();
         lbltotal = new javax.swing.JLabel();
@@ -34,9 +33,9 @@ public class CrapsGUI extends javax.swing.JFrame {
 
         btnquit.setText("Quit");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtgame.setColumns(20);
+        txtgame.setRows(5);
+        jScrollPane1.setViewportView(txtgame);
 
         lblmoney.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -99,12 +98,23 @@ public class CrapsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnrollActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrollActionPerformed
+       
         game.roll();
         //display dice images
         lbldie1.setIcon(game.getDiePic(1));
         lbldie2.setIcon(game.getDiePic(2));
         //new game
+        if (newgame)
+        {
+            txtgame.setText("New Game\n------\nYou rolled a: " + game.getTotal());
+            newgame=false;//no longer a new game
+            money-=5;
+            lblmoney.setText("$" + money);
+        }
         
+        else txtgame.append("\n-----\nYou rolled a: " + gameTotal());
+        
+        lbltotal.setText(""+game.getTotal());
     }//GEN-LAST:event_btnrollActionPerformed
 
     
@@ -121,10 +131,10 @@ public class CrapsGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnquit;
     private javax.swing.JButton btnroll;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbldie1;
     private javax.swing.JLabel lbldie2;
     private javax.swing.JLabel lblmoney;
     private javax.swing.JLabel lbltotal;
+    private javax.swing.JTextArea txtgame;
     // End of variables declaration//GEN-END:variables
 }
