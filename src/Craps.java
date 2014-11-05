@@ -51,9 +51,5 @@ public class Craps
     {
         return point;
     }
-    public game()
-    {
-        
-    }
     
 }
