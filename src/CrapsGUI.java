@@ -138,7 +138,9 @@ public class CrapsGUI extends javax.swing.JFrame {
         
         if(game.hasWon())
         {
+            txtgame.append("\nYou have Won")
             money+=15;
+            newgame=true;
             game=new Craps();
             lbltotal.setText("$" + money);
         }
