@@ -5,6 +5,7 @@ public class CrapsGUI extends javax.swing.JFrame {
     Craps game;
     boolean newgame; 
     int money;
+    
     public CrapsGUI() {
         initComponents();
         game= new Craps();
@@ -39,6 +40,11 @@ public class CrapsGUI extends javax.swing.JFrame {
         lbldie1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnquit.setText("Quit");
+        btnquit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnquitActionPerformed(evt);
+            }
+        });
 
         lblmoney.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -119,12 +125,6 @@ public class CrapsGUI extends javax.swing.JFrame {
             lblmoney.setText("$" + money);
         }
         
-        else txtgame.append("\n-----\nYou rolled a: " + game.getTotal());
-        
-        lbltotal.setText(""+game.getTotal());
-        
-       
-        
         if (newgame)
         {
            txtgame.setText("");
@@ -133,32 +133,36 @@ public class CrapsGUI extends javax.swing.JFrame {
            lblmoney.setText("$" + money);
         }
         
-        else
-            txtgame.setText("");
+        else txtgame.append("\n-----\nYou rolled a: " + game.getTotal());
+        
+        lbltotal.setText(""+game.getTotal());
         
         if(game.hasWon())
         {
-            txtgame.append("\nYou have Won")
+            txtgame.append("\nYou have Won");
             money+=15;
             newgame=true;
             game=new Craps();
             lbltotal.setText("$" + money);
         }
         
-        else
-        
             
-       if(game.hasLost())
+        else if(game.hasLost())
        {
-           game=new Craps();
            
+           txtgame.append("\nYou lost!");
+           game=new Craps();
+           newgame=true;
        }
         
-        else
+        else txtgame.append("\nYou need" + game.getPoint()+ " to win");
            
     }//GEN-LAST:event_btnrollActionPerformed
 
-    
+    private void btnquitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnquitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnquitActionPerformed
+
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
